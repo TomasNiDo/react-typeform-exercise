@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+form {
+  height: 110px;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-group {
+  height: 180px;
+  opacity: 0.3;
+}
+
+.form-group.active {
+  opacity: 1;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  right: 0;
+  background-color: rgba(204, 204, 204, 0.4);
+  width: 100%;
+  text-align: right;
+}
