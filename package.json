@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "animate.css": "^3.7.0",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.1.2",
     "easy-scroll": "^0.5.1",
     "joi-browser": "^13.4.0",
     "lodash": "^4.17.11",
