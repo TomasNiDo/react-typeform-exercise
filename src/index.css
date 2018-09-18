@@ -20,6 +20,7 @@ form {
 
 label {
   font-size: 1.8rem;
+  display: block;
 }
 
 input[type='text'],
@@ -47,4 +48,40 @@ input[type='number'] {
 
 .tracking-wide {
   letter-spacing: 0.125rem;
+}
+
+.index {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.choice {
+  background: #fff;
+  border: 2px solid #007bff;
+  margin: 1rem;
+  padding: 2rem;
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.choice.active,
+.choice:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+span.choice-icon {
+  font-size: 4rem;
+  color: #007bff;
+  transition: all .2s ease-in-out;
+}
+
+.choice.active span.choice-icon,
+.choice:hover span.choice-icon {
+  color: #fff;
 }

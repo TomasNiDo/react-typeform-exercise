@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import TypeForm from "./components/TypeForm";
+import AdonForm from "./components/AdonForm";
 
 class App extends Component {
   render() {
-    return <TypeForm />;
+    return <AdonForm />;
   }
 }
 
