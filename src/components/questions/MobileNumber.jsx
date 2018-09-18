@@ -2,13 +2,13 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Label from "../Label";
 
-const BusinessName = props => {
+const MobileNumber = props => {
   const { refs, active, name, error, value, onNext, ...rest } = props;
 
   return (
     <section ref={refs} className="section">
       <div className={active ? "form-group active" : "form-group"}>
-        <Label index="2" label="Business Name" name={name} />
+        <Label index="4" label="Mobile Number" name={name} />
         <div className="ml-5">
           <input
             type="text"
@@ -39,4 +39,4 @@ const BusinessName = props => {
   );
 };
 
-export default BusinessName;
+export default MobileNumber;

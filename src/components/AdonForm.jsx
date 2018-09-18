@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import easyScroll from "easy-scroll";
 import TelstraChoice from "./questions/TelstraChoice";
 import BusinessName from "./questions/BusinessName";
+import EmailAddress from "./questions/EmailAddress";
+import MobileNumber from "./questions/MobileNumber";
 
 class AdonForm extends Component {
   state = {
@@ -17,7 +19,7 @@ class AdonForm extends Component {
       customScripts: [],
       requestedScripts: 0
     },
-    order: ["telstraMobile", "businessName"],
+    order: ["telstraMobile", "businessName", "email", "mobileNumber"],
     plans: [
       { id: 1, name: "Ad On Mobile 4" },
       { id: 2, name: "Ad On Mobile 8" },
@@ -48,12 +50,12 @@ class AdonForm extends Component {
     const order = [...this.state.order];
     const index = order.findIndex(o => o === name);
 
-    if (! order[index + 1]) return;
+    if (!order[index + 1]) return;
     const active = order[index + 1];
 
     this.setState({ form, active });
 
-    this.scrollNext();
+    this.scrollNext(active);
   };
 
   handleChange = ({ currentTarget: input }) => {
@@ -66,17 +68,15 @@ class AdonForm extends Component {
     const order = [...this.state.order];
     const index = order.findIndex(o => o === name);
 
-    if (! order[index + 1]) return;
+    if (!order[index + 1]) return;
     const active = order[index + 1];
 
     this.setState({ active });
 
-    this.scrollNext();
-  }
+    this.scrollNext(active);
+  };
 
-  scrollNext = () => {
-    const active = this.state.active;
-
+  scrollNext = active => {
     easyScroll({
       scrollableDomEle: window,
       direction: "bottom",
@@ -84,12 +84,13 @@ class AdonForm extends Component {
       easingPreset: "easeInQuad",
       scrollAmount: this[active].offsetTop
     });
-  }
+  };
 
   render() {
     const { form, errors, active } = this.state;
 
-    return <div className="container">
+    return (
+      <div className="container">
         <form onSubmit={this.handleSubmit}>
           <TelstraChoice
             refs={this.telstraMobile}
@@ -109,8 +110,29 @@ class AdonForm extends Component {
             onChange={this.handleChange}
             onNext={this.handleNext}
           />
+
+          <EmailAddress
+            refs={this.email}
+            name="email"
+            active={active === "email"}
+            value={form.email}
+            error={errors.email}
+            onChange={this.handleChange}
+            onNext={this.handleNext}
+          />
+
+          <MobileNumber
+            refs={this.mobileNumber}
+            name="mobileNumber"
+            active={active === "mobileNumber"}
+            value={form.mobileNumber}
+            error={errors.mobileNumber}
+            onChange={this.handleChange}
+            onNext={this.handleNext}
+          />
         </form>
-      </div>;
+      </div>
+    );
   }
 }
 
