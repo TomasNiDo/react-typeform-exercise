@@ -13,14 +13,17 @@ const Input = ({ name, label, error, value, active, onNext, ...rest }) => {
       />
       {error && <div className="alert alert-danger">{error}</div>}
       {value !== "" && (
-        <button
-          type="button"
-          tabIndex="-1"
-          className="btn btn-primary btn-sm mt-2"
-          onClick={onNext}
-        >
-          Next
-        </button>
+        <div className="d-flex align-items-center mt-4">
+          <button
+            type="button"
+            tabIndex="-1"
+            className="btn btn-primary tracking-wide font-weight-bold text-uppercase"
+            onClick={onNext}
+          >
+            Next
+          </button>
+          <span className="tracking-wide font-weight-bold text-uppercase text-primary ml-2">or Press Tab</span>
+        </div>
       )}
     </div>
   );

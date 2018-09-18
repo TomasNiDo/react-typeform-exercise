@@ -72,6 +72,7 @@ class App extends Component {
 
   handleScroll = event => {
     const userScroll = window.scrollY;
+    console.log(userScroll);
   };
 
   validateProperty = ({ name, value }) => {
@@ -117,23 +118,22 @@ class App extends Component {
     }
 
     const hasError = this.checkErrors(question);
-
     if (hasError) return;
 
     const index = questions.indexOf(question);
-
     if (!questions[index + 1]) return;
 
     questions[index].active = false;
     questions[index + 1].active = true;
 
-    const scroll = this.state.scroll + 180;
+    const scroll = this.state.scroll + 400;
+
     easyScroll({
       scrollableDomEle: window,
       direction: "bottom",
       duration: 300,
       easingPreset: "easeInQuad",
-      scrollAmount: scroll
+      scrollAmount: 400
     });
 
     this.setState({ questions, scroll });
@@ -153,13 +153,14 @@ class App extends Component {
     questions[index].active = false;
     questions[index - 1].active = true;
 
-    const scroll = this.state.scroll - 180;
+    const scroll = this.state.scroll - 400;
+
     easyScroll({
       scrollableDomEle: window,
-      direction: "top",
+      direction: "bottom",
       duration: 300,
       easingPreset: "easeInQuad",
-      scrollAmount: scroll
+      scrollAmount: -400
     });
 
     this.setState({ questions, scroll });
@@ -167,7 +168,6 @@ class App extends Component {
 
   handleKeyPress = e => {
     const keyCode = e.which || e.keyCode;
-    console.log(keyCode);
     if (keyCode === 9) {
       const canProceed = this.checkIfCanProceed();
       if (!canProceed) return e.preventDefault();
@@ -202,11 +202,17 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <div
-          className="container d-flex justify-content-center align-items-center"
-          style={{ height: "100vh" }}
-        >
+        <div className="container d-flex justify-content-center">
           <form onSubmit={this.handleSubmit} className="col">
+            <div className="form-group active">
+              <h3>Subscribe</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
+                pariatur, amet molestias reiciendis animi rerum voluptatum
+                tempora facere, assumenda eius quo et quis sapiente! Velit quam
+                reprehenderit quo laudantium libero.
+              </p>
+            </div>
             {questions.map((question, index) => (
               <Input
                 key={index}
@@ -222,7 +228,9 @@ class App extends Component {
                 onKeyDown={this.handleKeyPress}
               />
             ))}
-            <button className="btn btn-primary">Submit</button>
+            <div className="form-group active">
+              <button className="btn btn-primary">Submit</button>
+            </div>
           </form>
         </div>
 

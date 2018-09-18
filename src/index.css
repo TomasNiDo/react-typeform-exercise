@@ -5,17 +5,34 @@ body {
 }
 
 form {
-  height: 110px;
   transition: all 0.3s ease-in-out;
+  padding-bottom: 5rem;
 }
 
 .form-group {
-  height: 180px;
+  padding: 4rem 0;
   opacity: 0.3;
 }
 
 .form-group.active {
   opacity: 1;
+}
+
+label {
+  font-size: 1.8rem;
+}
+
+input[type='text'],
+input[type='number'] {
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  outline: none !important;
+  border-color: #ccc !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  padding-top: 2rem;
+  font-size: 1.5rem;
 }
 
 .footer {
@@ -26,4 +43,8 @@ form {
   background-color: rgba(204, 204, 204, 0.4);
   width: 100%;
   text-align: right;
+}
+
+.tracking-wide {
+  letter-spacing: 0.125rem;
 }
