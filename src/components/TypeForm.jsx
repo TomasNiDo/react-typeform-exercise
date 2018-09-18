@@ -69,21 +69,19 @@ class TypeForm extends Component {
 
   handleScroll = event => {
     const userScroll = window.scrollY;
-    console.log(userScroll);
+
     if (userScroll > this.state.userScroll) {
-      console.log("paubos");
-      this.setState({ userScroll });
-      this.handleScrollNext();
+      this.scrollToNextQuestion();
     }
 
     if (userScroll < this.state.userScroll) {
-      console.log("pataas");
-      this.setState({ userScroll });
-      this.handleScrollPrevious();
+      this.scrollToPreviousQuestion();
     }
+
+    this.setState({ userScroll });
   };
 
-  handleScrollNext = () => {
+  scrollToNextQuestion = () => {
     const questions = [...this.state.questions];
     const question = questions.find(q => q.active);
 
@@ -96,7 +94,7 @@ class TypeForm extends Component {
     this.setState({ questions });
   };
 
-  handleScrollPrevious = () => {
+  scrollToPreviousQuestion = () => {
     const questions = [...this.state.questions];
     const question = questions.find(q => q.active);
 
