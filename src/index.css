@@ -4,6 +4,11 @@ body {
   font-family: sans-serif;
 }
 
+.section {
+  display: flex;
+  align-items: center;
+}
+
 form {
   transition: all 0.3s ease-in-out;
   padding-bottom: 5rem;

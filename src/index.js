@@ -7,6 +7,8 @@ import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
 
+window.$ = require("jquery");
+
 library.add(faCheck, faTimes);
 
 ReactDOM.render(<App />, document.getElementById("root"));

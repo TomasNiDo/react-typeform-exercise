@@ -4,6 +4,7 @@ import TelstraChoice from "./questions/TelstraChoice";
 import BusinessName from "./questions/BusinessName";
 import EmailAddress from "./questions/EmailAddress";
 import MobileNumber from "./questions/MobileNumber";
+require("jquery-scrollify");
 
 class AdonForm extends Component {
   state = {
@@ -37,6 +38,27 @@ class AdonForm extends Component {
       this[key] = React.createRef();
     }
   }
+
+  componentDidMount() {
+    window.$.scrollify({
+      section: ".section",
+      updateHash: false,
+      overflowScroll: false,
+      before: this.handleBeforeScroll
+    });
+  }
+
+  componentWillUnmount() {
+    window.$.scrollify.destroy();
+  }
+
+  handleBeforeScroll = index => {
+    const order = [...this.state.order];
+
+    const active = order[index];
+
+    this.setState({ active });
+  };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -77,13 +99,7 @@ class AdonForm extends Component {
   };
 
   scrollNext = active => {
-    easyScroll({
-      scrollableDomEle: window,
-      direction: "bottom",
-      duration: 300,
-      easingPreset: "easeInQuad",
-      scrollAmount: this[active].offsetTop
-    });
+    window.$.scrollify.next();
   };
 
   render() {
@@ -130,6 +146,13 @@ class AdonForm extends Component {
             onChange={this.handleChange}
             onNext={this.handleNext}
           />
+
+          <section
+            className="section submit-btn"
+            style={{ padding: "5rem 2.4rem" }}
+          >
+            <button className="btn btn-primary btn-lg">Submit</button>
+          </section>
         </form>
       </div>
     );
